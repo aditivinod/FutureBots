@@ -7,9 +7,8 @@ import fedorabots.client.event.*;
 
 public class BotBase extends Robot {
 
-    //Using constants is good style, no magic numbers
     public static final Color BOT_COLOR = Color.SIENNA;
-    public static final int DIFFICULTY = 5;
+    public static final int DIFFICULTY = 1;
 
     public static void main(String[] args){
         new BotBase().run();
@@ -18,13 +17,12 @@ public class BotBase extends Robot {
     public void run() {
 
         setColor(Color.SIENNA);
-        //Swap to a networked game when you want to compete with others
         joinLocalGame(DIFFICULTY);
         while (!isDead()) {
             if (canShoot())
             {
-                int a = 1;
-                setAcceleration(a,5);
+                int a = -1;
+                setAcceleration(a,a);
                 List<DetectedEntity> nearby = nearbyEntities();
                 if (nearby.size() > 0) {
                     double y = nearby.get(0).getY();
@@ -35,7 +33,6 @@ public class BotBase extends Robot {
             }
         }
 
-                //Do something, how will your robot work?
             }
 
         }
